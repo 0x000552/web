@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///Users/artem/iCloud/Develop/git_repos/web/test.html -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link href="./test_files/css" rel="stylesheet">
+
+        <style type="text/css">
+            :root {
+                font-family: 'Lobster', monospace;
+                font-weight: 100;
+				font-style: normal;
+                
+                background: #1A1A1A;
+
+                height: 10000px;
+            }
+    
+    		#magic-table {
+                position: fixed;
+                left: 0px;
+                right: 0px;
+                bottom: 0px;
+                top: 0px;
+                margin: auto;
+                width: 280px;
+                height: 200px;
+
+                border-radius: 10%;
+                padding: 10px;
+
+                box-shadow: 0px 0px 10px 1px #cd85ff;
+
+                background: linear-gradient(35deg, rgb(31, 11, 34), rgb(105, 56, 105));
+                user-select: none;
+                text-transform: capitalize;
+                transition: all 2s;
+    		}
+    
+    		#magic-table:hover {
+                box-shadow: 0px 0px 15px #cd85ff, 
+                            0px 0px 100px rgb(130, 130, 130);
+                transform: scale(1.2);
+    		}
+    
+            #magic-table td, #magic-table th {
+                color: #cd85ff;
+				text-align: center;
+            }
+
+            #magic-table th {
+                border: 1px #c883d454;
+                border-style: none none solid none;
+                padding: 1px;
+            }
+
+            #magic-table td {
+                border-radius: 5%;
+                border: 1px outset #c883d454;
+                padding: 5px;
+            }
+
+            #magic-table td:active {
+                color: #c883d454;
+                border: 1px inset #cd85ff;
+            }
+
+            #magic-table tr.data_rows:hover {
+                color: hsl(240, 90%, 40%);
+                background-color: rgba(200, 100, 255, 0.1);
+            }
+
+
+            #blink_red_text {
+                color: rgb(214, 1, 1);
+                
+                animation: blink_red_text 4s infinite;
+            }
+
+            @keyframes blink_red_text {
+                0%, 50% { color:rgb(214, 1, 1); }
+                100% { color: rgba(255, 0, 0, 0); }
+            }
+            
+
+            #pushed_square {
+                width: 100px;
+                height: 100px;
+                background: rgb(0, 0, 214);
+                margin-right: 10px;
+                float: left;
+
+                animation: diagonally 2s ease-out infinite;
+            }
+
+            @keyframes diagonally {
+                0% {
+                    margin-top: 0px;
+                    box-shadow: -5px -5px 5px rgb(230, 0, 0);
+                }
+                50% {
+                    margin-top: 100px;
+                    margin-left: 100px;
+                    box-shadow: none;
+                }
+                51% {
+                    box-shadow: 5px 5px 5px rgb(230, 0, 0);
+                    margin-bottom: 8px
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="pushed_square"></div>
+        <p id="blink_red_text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu molestie leo. Nulla semper consectetur eros vitae venenatis. 
+                Quisque sed semper mauris. Phasellus eu erat dolor. Donec ornare, velit pulvinar pharetra tincidunt, libero elit placerat odio, vitae vehicula nulla tellus semper massa. 
+                Vivamus faucibus urna venenatis accumsan egestas. Duis at tempus ipsum, ac pretium libero. Vestibulum vel nunc id felis aliquet fringilla. Donec sed fringilla purus.
+                Praesent lobortis ornare velit sit amet aliquet. Nunc mi ex, suscipit eget lorem id, suscipit feugiat nisl. 
+                Duis feugiat aliquam bibendum. Nam vitae nibh nisi. Sed eget augue consequat ligula feugiat fermentum. 
+                Etiam eget odio eget metus aliquet ultricies nec id purus. Nulla facilisi. Mauris a arcu mi. 
+                Sed pretium dignissim velit, non ultrices tellus malesuada ut. Nam faucibus, sapien eget pulvinar cursus, sapien sem feugiat erat, ut feugiat mi tortor sed purus. 
+                Quisque dignissim et neque non accumsan. Morbi sit amet justo fringilla, posuere dolor sit amet, feugiat nulla. Aliquam ac mi sodales, ornare urna vel, vehicula orci.
+                Fusce leo urna, dapibus quis libero eu, cursus semper turpis. 
+                Proin ultricies, tellus ac aliquam ullamcorper, mauris lorem pellentesque risus, eu facilisis purus eros ultricies massa. Nulla nisi felis, blandit vehicula laoreet quis, dictum eget nisl. 
+                Curabitur dapibus dolor lacus. Quisque laoreet dui sit amet odio volutpat, vitae sagittis mi placerat. Etiam consectetur vehicula enim, eget ullamcorper erat luctus vitae. Morbi vel purus posuere tellus finibus bibendum. Etiam quis nunc nulla. 
+                Donec vehicula massa sit amet turpis convallis condimentum. Donec venenatis ante quis tellus ultrices, id sagittis purus interdum. Duis volutpat turpis nunc, eu sodales massa laoreet in. Vestibulum rhoncus leo eu mi interdum, in sodales mauris dignissim.
+                Curabitur tristique felis id quam semper faucibus. 
+                Fusce faucibus eros non neque sodales maximus. Fusce varius nibh ut volutpat cursus. In congue urna odio, sed pretium erat placerat non. 
+                Cras sed purus urna. Donec ipsum sapien, accumsan quis odio sed, ultrices euismod dui. Nulla porta dui arcu. 
+                Vestibulum volutpat ex sed metus volutpat ullamcorper. Nulla mi lectus, placerat et fermentum sed, semper id mi. Sed elementum placerat nisi, a feugiat sapien volutpat nec. 
+                Fusce tincidunt vel lectus ac sollicitudin. 
+                Proin sit amet magna dignissim, ultrices nulla eget, porttitor arcu. Nam faucibus volutpat hendrerit. Cras vitae sem faucibus, elementum enim in, eleifend ante.
+                Nulla dapibus quam felis, vel posuere diam gravida ac. 
+                Maecenas convallis, ex a ultrices viverra, nunc mi sodales mauris, quis interdum est nisi a sem. Etiam at vulputate purus. 
+                Curabitur vel condimentum dui, ac laoreet nulla. Aliquam ut dolor mi. Sed ac aliquet dui. Sed sit amet ex arcu.
+        </p>
+
+        <table id="magic-table">
+            <tbody>
+                <tr>
+                    <th>Head 1</th>
+                    <th>Head 2</th>
+                    <th>Head 3</th>
+                </tr>
+                <tr class="data_rows">
+                    <td>data 11</td><td>data 12</td><td>data 13</td>
+                </tr>
+                <tr class="data_rows" font-size="large">
+                    <td>data 21</td><td>data 22</td><td>data 23</td>
+                </tr>
+                <tr class="data_rows">
+                    <td>data 31</td><td>data 32</td><td>data 33</td>
+                </tr>
+                <tr class="data_rows">
+                    <td>data 41</td><td>data 42</td><td>data 43</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>
