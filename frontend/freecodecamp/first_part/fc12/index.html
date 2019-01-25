@@ -8,9 +8,9 @@
         <style>
             
             :root {
-                /* eye care... */
+                --main-text-color: hsl(20, 45%, 80%);
                 background: hsl(29, 53%, 10%);
-                color: rgb(219, 219, 219);
+                color: var(--main-text-color, hsl(20, 45%, 72%));
                 font-family: 'Raleway', Helvetica, sans-serif
             }
 
@@ -29,20 +29,43 @@
                 text-align: center;
             }
 
+            .input-rows {
+                margin-bottom: 20px;
+            }
+
             .input-labels {
                 display: inline-block;
-                width: 48%;
-                margin: 10px 20px 5px 0;
+                margin-right: 20px;
+                width: 40%;
                 text-align: right;
             }
 
             .input-fields{
                 display: inline-block;
+                background:hsl(20, 45%, 35%); 
+                border: 1px solid hsl(20, 45%, 72%);
+                color: inherit;
+
+                padding: 5px;
+                min-width: 10em;               
                 width: 48%;
             }
 
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: var(--main-text-color, hsl(20, 45%, 72%));
+                opacity: 1; /* Firefox */
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: var(--main-text-color, hsl(20, 45%, 72%));
+            }
+
+            ::-ms-input-placeholder { /* Microsoft Edge */
+                color: var(--main-text-color, hsl(20, 45%, 72%));
+            }
+
             #submit {
-                margin: 10px;
+                margin-top: 20px;
                 width: 80px;
                 height: 30px;
 
@@ -61,6 +84,10 @@
                 border-radius: 10%/50%;
             }
 
+            legend {
+                text-align: left;
+            }
+
         </style>
     </head>
 
@@ -71,20 +98,37 @@
             <form  id="survey-form" autocomplete="on"> 
                 <p>
                 <div class="input-rows">
-                    <label for="name" id="name-label" class="input-labels">Name:</label><input type="text" id="name" class="input-fields"  required placeholder="Enter your name">
+                    <label for="name" id="name-label" class="input-labels">
+                        Name:
+                    </label>
+                    <input type="text" id="name" class="input-fields" required placeholder="Enter your name">
                 </div>
                 <div class="input-rows">
-                    <label for="email" id="email-label" class="input-labels">E-mail:</label><input type="text" id="email" class="input-fields" required placeholder="Enter your Email">
+                    <label for="email" id="email-label" class="input-labels">
+                        E-mail:
+                    </label>
+                    <input type="email" id="email" class="input-fields" required placeholder="Enter your Email">
                 </div>
                 <div class="input-rows">
                     <label for="number" id="number-label" class="input-labels"></label><input type="text" id="number" class="input-fields"  required placeholder="Enter your phone number">
                 </div>
                 <div class="input-rows">
-                    <label for="dropdown" id="dropdown-label" class="input-labels"></label><input type="text" id="dropdown" class="input-fields" required>
+                    <label for="dropdown" id="dropdown-label" class="input-labels">
+                        Type of chocolat you like
+                    </label>
+                    <select id="dropdown" class="input-fields" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                    </select>
                 </div>
                 <div class="input-rows">
                     <fieldset>
-
+                        <legend>Something</legend>
+                        <input type="radio" name="-radio" id="radio" class="input-radio" required><label for="radio"></label>
+                        <input type="radio" name="-radio" id="radio" class="input-radio"><label for="radio"></label>
+                        <input type="radio" name="-radio" id="radio" class="input-radio"><label for="radio"></label>
+                        <input type="radio" name="-radio" id="radio" class="input-radio"><label for="radio"></label>
                     </fieldset>
                 <button id="submit" type="submit">Submit</button> 
             </form> 
