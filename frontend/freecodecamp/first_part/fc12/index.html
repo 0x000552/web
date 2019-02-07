@@ -2,8 +2,10 @@
 <html lang="en">
     <head>  
         <title>Survey Form</title>
+
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset='utf-8'>
 
         <style>
             
@@ -11,46 +13,8 @@
                 --main-text-color: hsl(20, 45%, 80%);
                 background: hsl(29, 53%, 10%);
                 color: var(--main-text-color, hsl(20, 45%, 72%));
-                font-family: 'Raleway', Helvetica, sans-serif
-            }
-
-            #title {
-                margin-top: 50px;
-                text-align: center;
-            }
-
-            main {
-                background: hsl(20, 45%, 22%);
-                width: 70vw;
-                margin: 0 auto;
-
-                padding: 10px 20px;
-                
-                text-align: center;
-            }
-
-            .input-rows {
-                margin-bottom: 20px;
-            }
-
-            .input-labels {
-                display: inline-block;
-                margin-right: 20px;
-                width: 100%;
-
-                
-            }
-
-            .input-fields{
-                float: right;
-                background:hsl(20, 45%, 35%); 
-                border: 1px solid hsl(20, 45%, 72%);
-                color: inherit;
-
-
-                padding: 5px;
-                min-width: 10em;               
-                width: 48%;
+                font-family: 'Raleway', Helvetica, sans-serif;
+                min-width: 360px;
             }
 
             ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -66,14 +30,72 @@
                 color: var(--main-text-color, hsl(20, 45%, 72%));
             }
 
+            #title {
+                margin-top: 50px;
+                text-align: center;
+            }
+
+            main {
+                background: hsl(20, 45%, 22%);
+                width: 70vw;
+                min-width: 252px;
+                margin: 0 auto;
+
+                padding: 20px;
+                
+                border: 0;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            .input-rows {
+                margin-bottom: 20px;
+            }
+
+            .input-labels {
+                display: inline-block;
+                text-align: right;
+                margin-right: 5px;
+                width: 40%;
+            }
+
+            .input-fields{
+                display: inline-block;
+                background:hsl(20, 45%, 35%); 
+                border: 1px solid hsl(20, 45%, 72%);
+                border-radius: 5px;
+                color: inherit;
+
+                vertical-align: top;
+
+                margin-left: auto;
+                margin-right: 0;
+
+                padding: 5px;
+                width: 48%;
+            }
+
+            select.input-fields{
+                height: 2em;
+            }
+
+            .boxsizing-borderbox {
+                box-sizing: border-box;
+            }
+
+            textarea.input-fields {
+                resize: none;
+            }
+
             #submit {
-                margin-top: 20px;
-                width: 80px;
-                height: 30px;
+                margin-top: 15px;
+                width: 90px;
+                height: 40px;
 
-                background:  hsl(15, 53%, 20%);
+                background:  hsl(15, 53%, 10%);
 
-                font-weight: bold;
+                /*font-weight: bold;*/
+                font-size: 0.9rem;
                 color: inherit;
 
                 border: 1px outset hsl(15, 53%, 10%);
@@ -86,8 +108,43 @@
                 border-radius: 10%/50%;
             }
 
+
             legend {
                 text-align: left;
+            }
+
+            .fieldset-border {
+                border: 1px solid hsl(20, 45%, 30%);
+                border-radius: 5px;
+            }
+
+            footer {
+                margin-top: 80px;
+                text-align: center;
+                font-size: 0.7rem;
+            }
+
+            a {
+                color: hsl(240, 53%, 55%);
+            }
+
+            @media (max-width: 470px) {
+                .ct-radio-labels {
+                    display: block;
+                    text-align: left;
+                    margin-left: 20px;
+                }
+
+                .input-labels {
+                    display: block;
+                    text-align: left;
+                    width: auto;
+                    margin-bottom: 5px;
+                }
+
+                .input-fields {
+                    width: 100%;
+                }
             }
 
         </style>
@@ -97,44 +154,79 @@
         <h1 id="title">Survey Form</h1>    
         <main>
 
+            <p id="description"></p>
             <form  id="survey-form" autocomplete="on"> 
-                <p>
+                
                 <div class="input-rows">
                     <label for="name" id="name-label" class="input-labels">
                         Name:
                     </label>
-                    <input type="text" id="name" class="input-fields" required placeholder="Enter your name">
+                    <input type="text" id="name" class="input-fields boxsizing-borderbox" required placeholder="Enter your name">
                 </div>
+
                 <div class="input-rows">
                     <label for="email" id="email-label" class="input-labels">
                         E-mail:
                     </label>
-                    <input type="email" id="email" class="input-fields" required placeholder="Enter your Email">
+                    <input type="email" id="email" class="input-fields boxsizing-borderbox" required placeholder="Enter your Email">
                 </div>
+
                 <div class="input-rows">
-                    <label for="number" id="number-label" class="input-labels"></label><input type="text" id="number" class="input-fields"  required placeholder="Enter your phone number">
+                    <label for="number" id="number-label" class="input-labels">
+                        Phone number:
+                    </label>
+                    <input type="number" id="number" class="input-fields boxsizing-borderbox" required placeholder="Enter your phone number">
                 </div>
+
                 <div class="input-rows">
                     <label for="dropdown" id="dropdown-label" class="input-labels">
-                        Type of chocolat you like
+                        Country you live in:
                     </label>
                     <select id="dropdown" class="input-fields" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                            <option>Russia</option>
+                            <option>Other 😀</option>
                     </select>
                 </div>
+
                 <div class="input-rows">
-                    <fieldset>
-                        <legend>Something</legend>
-                        <input type="radio" name="-radio" id="radio" class="input-radio" required><label for="radio"></label>
-                        <input type="radio" name="-radio" id="radio" class="input-radio"><label for="radio"></label>
-                        <input type="radio" name="-radio" id="radio" class="input-radio"><label for="radio"></label>
-                        <input type="radio" name="-radio" id="radio" class="input-radio"><label for="radio"></label>
+                    <fieldset class="fieldset-border">
+                        <legend class="input-legend-radio">What types of chocolate do you prefer?</legend>
+                        <label for="ct-milk-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-milk-radio" class="input-radio" value="milk">Milk</label>
+                        <label for="ct-dark-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-dark-radio" class="input-radio" value="dark">Dark</label>
+                        <label for="ct-white-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-white-radio" class="input-radio" value="white">White</label>
+                        <label for="ct-raw-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-raw-radio" class="input-radio" value="raw" required>Raw</label>
                     </fieldset>
-                <button id="submit" type="submit">Submit</button> 
+                </div>
+
+                <div class="input-rows">
+                        <fieldset class="fieldset-border">
+                            <legend class="input-legend-checkbox"></legend>
+                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
+                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
+                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
+                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
+                        </fieldset>
+                </div>
+
+                <div class="input-rows">
+                        <label for="comments" id="textarea-label" class="input-labels">
+                                Any additional comments:
+                        </label>
+                        <textarea id="comments" class="input-fields boxsizing-borderbox" name="comment" placeholder="Enter your comment here..." rows="3"></textarea>
+                </div> 
+
+
+                <button id="submit" type="submit">Submit</button>
+
             </form> 
+
         </main>
+
+        <footer>
+            <p><em>Created by: <b>0x000552</b>.</em></p>
+            <address>Contact information: <a href="mailto:0x000552@gmail.com">
+                0x000552@gmail.com</a>.</address>
+        </footer>
     </body>
 
 </html>
