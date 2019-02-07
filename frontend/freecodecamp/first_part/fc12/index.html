@@ -78,11 +78,13 @@
 
                 padding: 5px;
                 width: 48%;
+                height: 2.5em;
             }
 
-            select.input-fields{
-                height: 2em;
+            textarea.input-fields{
+                height: auto;
             }
+
 
             fieldset {
                 padding: 10px;
@@ -104,7 +106,7 @@
 
             .input-radio, .input-checkbox {
                 margin-right: 7px;
-                vertical-align: 3px;
+                /*vertical-align: 3px;*/
             }
 
             textarea.input-fields {
@@ -127,13 +129,13 @@
                 font-size: 0.9rem;
                 color: inherit;
 
-                border: 1px outset hsl(15, 53%, 10%);
+                border: 0px outset hsl(15, 53%, 10%);
                 border-radius: 10%/50%;
             }
 
             #submit:active {
                 background: hsl(15, 53%, 18%);;
-                border: 1px inset hsl(15, 53%, 10%);
+                border: 0px inset hsl(15, 53%, 10%);
                 border-radius: 10%/50%;
             }
 
@@ -147,6 +149,13 @@
             a {
                 color: hsl(240, 53%, 55%);
             }
+
+            .appearance-none {
+                -moz-appearance: none;
+	            -webkit-appearance: none; 
+	            appearance: none;
+            }
+
 
             @media (max-width: 640px) {
                 .radio-labels, .checkbox-labels  {
@@ -199,12 +208,12 @@
                 </div>
 
                 <div class="input-rows">
-                    <label for="dropdown" id="dropdown-label" class="input-labels">
+                    <label for="coutry-dropdown" id="dropdown-label" class="input-labels">
                         Country you live in:
                     </label>
-                    <select id="dropdown" class="input-fields" required>
-                            <option>Russia</option>
-                            <option>Other 😀</option>
+                    <select id="country-dropdown" class="input-fields appearance-none" name="country-dropdown" required>
+                            <option value="Russia">Russia</option>
+                            <option value="Other">Other 😀</option>
                     </select>
                 </div>
 
