@@ -41,11 +41,15 @@
                 min-width: 252px;
                 margin: 0 auto;
 
-                padding: 20px;
+                padding: 10px 20px 20px;
                 
                 border: 0;
                 border-radius: 8px;
                 text-align: center;
+            }
+            
+            #description {
+                margin-bottom: 30px;
             }
 
             .input-rows {
@@ -54,9 +58,10 @@
 
             .input-labels {
                 display: inline-block;
-                text-align: right;
-                margin-right: 5px;
                 width: 40%;
+                margin-right: 5px;
+                
+                text-align: right;
             }
 
             .input-fields{
@@ -79,13 +84,37 @@
                 height: 2em;
             }
 
+            fieldset {
+                padding: 10px;
+            }
+
+            .fieldset-border {
+                border: 1px solid hsl(20, 45%, 30%);
+                border-radius: 5px;
+            }
+
             .boxsizing-borderbox {
                 box-sizing: border-box;
+            }
+
+            .radio-labels, .checkbox-labels {
+                margin-right: 15px;
+                margin-bottom: 5px;
+            }
+
+            .input-radio, .input-checkbox {
+                margin-right: 7px;
+                vertical-align: 3px;
             }
 
             textarea.input-fields {
                 resize: none;
             }
+
+            legend {
+                text-align: left;
+            }
+
 
             #submit {
                 margin-top: 15px;
@@ -109,15 +138,6 @@
             }
 
 
-            legend {
-                text-align: left;
-            }
-
-            .fieldset-border {
-                border: 1px solid hsl(20, 45%, 30%);
-                border-radius: 5px;
-            }
-
             footer {
                 margin-top: 80px;
                 text-align: center;
@@ -128,8 +148,8 @@
                 color: hsl(240, 53%, 55%);
             }
 
-            @media (max-width: 470px) {
-                .ct-radio-labels {
+            @media (max-width: 640px) {
+                .radio-labels, .checkbox-labels  {
                     display: block;
                     text-align: left;
                     margin-left: 20px;
@@ -137,9 +157,9 @@
 
                 .input-labels {
                     display: block;
-                    text-align: left;
                     width: auto;
                     margin-bottom: 5px;
+                    text-align: left;
                 }
 
                 .input-fields {
@@ -154,28 +174,28 @@
         <h1 id="title">Survey Form</h1>    
         <main>
 
-            <p id="description"></p>
+            <p id="description">What is your preferences?</p>
             <form  id="survey-form" autocomplete="on"> 
                 
                 <div class="input-rows">
                     <label for="name" id="name-label" class="input-labels">
                         Name:
                     </label>
-                    <input type="text" id="name" class="input-fields boxsizing-borderbox" required placeholder="Enter your name">
+                    <input type="text" id="name" class="input-fields boxsizing-borderbox" name="name" required placeholder="Enter your name">
                 </div>
 
                 <div class="input-rows">
                     <label for="email" id="email-label" class="input-labels">
                         E-mail:
                     </label>
-                    <input type="email" id="email" class="input-fields boxsizing-borderbox" required placeholder="Enter your Email">
+                    <input type="email" id="email" class="input-fields boxsizing-borderbox" name="email" required placeholder="Enter your Email">
                 </div>
 
                 <div class="input-rows">
                     <label for="number" id="number-label" class="input-labels">
                         Phone number:
                     </label>
-                    <input type="number" id="number" class="input-fields boxsizing-borderbox" required placeholder="Enter your phone number">
+                    <input type="number" id="number" class="input-fields boxsizing-borderbox" name="number" required placeholder="Enter your phone number">
                 </div>
 
                 <div class="input-rows">
@@ -191,20 +211,22 @@
                 <div class="input-rows">
                     <fieldset class="fieldset-border">
                         <legend class="input-legend-radio">What types of chocolate do you prefer?</legend>
-                        <label for="ct-milk-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-milk-radio" class="input-radio" value="milk">Milk</label>
-                        <label for="ct-dark-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-dark-radio" class="input-radio" value="dark">Dark</label>
-                        <label for="ct-white-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-white-radio" class="input-radio" value="white">White</label>
-                        <label for="ct-raw-radio" class="ct-radio-labels"><input type="radio" name="ct-radio" id="ct-raw-radio" class="input-radio" value="raw" required>Raw</label>
+                        <label for="ct-milk-radio" class="radio-labels"><input type="radio" name="ct-radio" id="ct-milk-radio" class="input-radio" value="milk">Milk</label>
+                        <label for="ct-dark-radio" class="radio-labels"><input type="radio" name="ct-radio" id="ct-dark-radio" class="input-radio" value="dark">Dark</label>
+                        <label for="ct-white-radio" class="radio-labels"><input type="radio" name="ct-radio" id="ct-white-radio" class="input-radio" value="white">White</label>
+                        <label for="ct-raw-radio" class="radio-labels"><input type="radio" name="ct-radio" id="ct-raw-radio" class="input-radio" value="raw" required>Raw</label>
                     </fieldset>
                 </div>
 
                 <div class="input-rows">
                         <fieldset class="fieldset-border">
-                            <legend class="input-legend-checkbox"></legend>
-                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
-                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
-                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
-                            <label for="checkbox" class="ct-radio-labels"><input type="checkbox" id="-checkbox" class="input-checkbox" name="-checkbox"></label>
+                            <legend class="input-legend-checkbox">
+                                What about ingredients?
+                            </legend>
+                            <label for="ingredient-nuts-checkbox" class="checkbox-labels"><input type="checkbox" id="ingredient-nuts-checkbox" class="input-checkbox" name="ingredients-checkbox" value="Nuts">Nuts</label>
+                            <label for="ingredient-coffee-checkbox" class="checkbox-labels"><input type="checkbox" id="ingredient-coffee-checkbox" class="input-checkbox" name="ingredients-checkbox" value="coffee">Coffee</label>
+                            <label for="ingredients-alcohol-checkbox" class="checkbox-labels"><input type="checkbox" id="ingredients-alcohol-checkbox" class="input-checkbox" name="ingredients-checkbox" value="alcohol">Alcohol</label>
+                            <label for="ingredients-cookies-checkbox" class="checkbox-labels"><input type="checkbox" id="ingredients-cookies-checkbox" class="input-checkbox" name="ingredients-checkbox" value="cookies">Cookies</label>
                         </fieldset>
                 </div>
 
