@@ -54,6 +54,10 @@ main {
     text-align: right;
 }
 
+.input-labels[for="comments"] {
+    vertical-align: top;
+}
+
 .input-fields{
     display: inline-block;
     width: 48%;
@@ -70,8 +74,6 @@ main {
 
     background:hsl(20, 45%, 35%); 
     color: inherit;
-
-    vertical-align: middle;
 }
 
 textarea.input-fields{
@@ -81,7 +83,7 @@ textarea.input-fields{
 fieldset {
     padding: 10px;
     width: 86%;
-    margin: 0 auto;
+    margin: 25px auto;
 }
 
 .fieldset-border {
