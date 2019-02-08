@@ -14,7 +14,7 @@
         <h1 id="title">Survey Form</h1>    
         <main>
 
-            <p id="description">What is your preferences?</p>
+            <p id="description">What is your your chocolate preferences?</p>
             <form  id="survey-form" autocomplete="on"> 
                 
                 <div class="input-rows">
@@ -35,7 +35,7 @@
                     <label for="number" id="number-label" class="input-labels">
                         Phone number:
                     </label>
-                    <input type="number" id="number" class="input-fields boxsizing-borderbox" min="1" max="999999999999999"name="number" required placeholder="Enter your phone number">
+                    <input type="number" id="number" class="input-fields boxsizing-borderbox" min="1" max="999999999999999" name="number" required placeholder="Enter your phone number">
                 </div>
 
                 <div class="input-rows">
@@ -43,6 +43,7 @@
                         Country you live in:
                     </label>
                     <select id="dropdown" class="input-fields appearance-none" name="country-dropdown" required>
+                            <option disabled selected value="">Select an option</option>
                             <option value="Russia">Russia</option>
                             <option value="Other">Other 😀</option>
                     </select>
