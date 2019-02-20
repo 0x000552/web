@@ -1,63 +1,121 @@
 :root {
-  background: darkorange;
+  background: root_bg_c;
 }
 
 body {
   margin: 0;
 }
 
-main {
-  background: darkkhaki;
+body main {
+  min-width: 320px;
 }
 
-.head {
-  height: 50px;
-  background: black;
+body main header {
+  font-size: 1.5em;
 }
 
-article {
-  margin-left: 200px;
-  background: grey;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-}
-
-#navbar {
-  top: 0px;
+body main #navbar {
   position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 200px;
-  overflow: hidden;
-  background: lightblue;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
+  color: black;
+  background: #c5dfe7;
+}
+
+body main #navbar header {
+  text-align: center;
+}
+
+body main #navbar .table-of-contents .nav-link {
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px solid black;
+  text-decoration: none;
+}
+
+body main #navbar .table-of-contents .nav-link:first-child {
+  margin-top: 1em;
+  border-top: 1px solid black;
+}
+
+body main #navbar .header_hidden_navbar {
+  display: none;
+}
+
+body main article {
+  margin-left: 200px;
+  padding: 1em;
+  border-left: 10px double black;
+  background: #a7a7a7;
+}
+
+body main article section {
+  margin-bottom: 50px;
+}
+
+body main article code {
+  white-space: pre;
 }
 
 @media (max-width: 800px) and (min-width: 501px) {
-  #navbar {
+  body main #navbar {
     width: 20px;
+    -webkit-transition: width 0.5s ease-out 0.5s, opacity 0.5s ease-out 0.5s;
+    transition: width 0.5s ease-out 0.5s, opacity 0.5s ease-out 0.5s;
   }
-  article {
+  body main #navbar * {
+    opacity: 0;
+    -webkit-transition: inherit;
+    transition: inherit;
+  }
+  body main #navbar .header_hidden_navbar {
+    display: block;
+    position: absolute;
+    opacity: 1 !important;
+    width: 0.1em;
+    font-family: monospace;
+    word-wrap: break-word;
+    white-space: pre-line;
+    top: 0;
+    left: 0.4em;
+    margin: auto;
+  }
+  body main #navbar + article {
     margin-left: 20px;
+    -webkit-transition: margin-left 0.5s ease-out 0.5s;
+    transition: margin-left 0.5s ease-out 0.5s;
   }
-  #navbar:hover {
+  body main #navbar:hover {
     width: 200px;
+    -webkit-transition: width 0.5s ease-out 0s, opacity 0.5s ease-out 0.5s;
+    transition: width 0.5s ease-out 0s, opacity 0.5s ease-out 0.5s;
   }
-  #navbar:hover + article {
+  body main #navbar:hover * {
+    opacity: 1;
+  }
+  body main #navbar:hover .header_hidden_navbar {
+    opacity: 0 !important;
+  }
+  body main #navbar:hover + article {
     margin-left: 200px;
+    -webkit-transition: margin-left 0.5s ease-out 0s;
+    transition: margin-left 0.5s ease-out 0s;
   }
 }
 
 @media (max-width: 500px) {
-  #navbar {
+  body main #navbar {
     position: static;
     height: auto;
     width: 100%;
     -webkit-transition: none;
     transition: none;
   }
-  article {
+  body main article {
     margin-left: 0px;
+    border: initial;
     -webkit-transition: none;
     transition: none;
   }

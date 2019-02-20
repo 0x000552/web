@@ -1,76 +1,175 @@
+// Colors
+$root_bg_c: darkorange;
+$navbar_bg_c: rgb(197, 223, 231);
+$article_bg_c: rgb(167, 167, 167);
+$nav_li_border_c: black;
+$nav_font_c: black;
+
 $navbar_hidden_width: 20px;
 $navbar_showed_width: 200px;
 
 
 :root {
-    background: darkorange;
+    background: root_bg_c;
 }
 
 body {
     margin: 0;
+
+    main {
+        min-width: 320px;
+
+        header {
+            font-size: 1.5em;
+        }
+    
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: $navbar_showed_width;
+            color: $nav_font_c;
+        
+            background: $navbar_bg_c;
+
+            header {
+                text-align: center;
+            }
+
+            .table-of-contents {
+                
+                .nav-link {
+                    display: block;
+                    padding: 10px 20px;
+                    border-bottom: 1px solid black;
+                    text-decoration: none;
+                }
+
+                .nav-link:first-child {
+                    margin-top: 1em;
+                    border-top: 1px solid black;
+                }
+            }
+        
+            .header_hidden_navbar {
+                display: none;
+            }
+        }
+    
+        article {
+            margin-left: $navbar_showed_width;
+        
+            padding: 1em;
+        
+            border-left: 10px double black;
+        
+            background: $article_bg_c;
+
+            section {
+                margin-bottom: 50px; 
+            }
+
+            code {
+                white-space: pre;
+            }
+        }
+    }
+
 }
-
-main {
-    background: darkkhaki;
-}
-
-.head {
-    height: 50px;
-    background: black;
-}
-
-article {
-    margin-left: 200px;
-    background: grey;
-    transition: all 1s ease-out;
-}
-
-#navbar {
-    top: 0px;
-    position: fixed;
-    height: 100vh;
-    width: $navbar_showed_width;
-
-    overflow: hidden;
-
-    background: lightblue;
-
-    transition: all 1s ease-out;
-}
-
 
 
 @media (max-width: 800px) and (min-width: 501px) {
-    #navbar {
-        width: $navbar_hidden_width;
-    }
+    body {
+        main {
 
-    article {
-        margin-left: $navbar_hidden_width;
-    }
+            $g_width_margin_delay: 0.5s;
+            $g_width_margin_duration: 0.5s;
+            $g_opacity_delay: 0.5s;
+            $g_opacity_duration: 0.5s;
 
-    #navbar:hover {
-        width: $navbar_showed_width;
-    }
+            //FIXME: Transition animation at hide process
 
-    #navbar:hover+article {
-        margin-left: $navbar_showed_width;
-    }
+            @mixin transition_op (  $width_margin_delay: $g_width_margin_delay, 
+                                    $width_margin_duration: $g_width_margin_duration, 
+                                    $opacity_delay: $g_opacity_delay, 
+                                    $opacity_duration: $g_opacity_duration
+                                 ) {
+                transition: width $width_margin_duration ease-out $width_margin_delay,
+                            opacity $opacity_duration ease-out $opacity_delay;
+            }
 
+            #navbar {
+                width: $navbar_hidden_width;
+                
+                * {
+                    opacity: 0;
+                    transition: inherit;
+                }
+
+                .header_hidden_navbar {
+                    display: block;
+                    position: absolute;
+            
+                    opacity: 1!important;
+                    width: 0.1em;
+                    font-family: monospace;
+                    word-wrap: break-word;
+                    white-space: pre-line;
+            
+                    top: 0;
+                    left: 0.4em;
+
+                    margin: auto;
+                }
+
+                @include transition_op();
+
+                & + article {
+                    margin-left: $navbar_hidden_width;
+                    transition: margin-left $g_width_margin_duration ease-out $g_width_margin_delay;
+                }
+
+                &:hover {
+                    width: $navbar_showed_width;
+
+                    @include transition_op($width_margin_delay: 0s);
+
+                    * {
+                        opacity: 1;
+                    }
+
+                    .header_hidden_navbar {
+                        opacity: 0!important;
+                    }
+
+                    & + article {
+                        margin-left: $navbar_showed_width;
+                        transition: margin-left $g_width_margin_duration ease-out 0s;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 500px) {
-    #navbar {
-        position: static;
-        height: auto;
-        width: 100%;
+    body {
+        main {
+            #navbar {
+                position: static;
+                height: auto;
+                width: 100%;
 
-        transition: none;
-    }
+                transition: none;
+            }
 
-    article {
-        margin-left: 0px;
+            article {
+                margin-left: 0px;
+                border: initial;
 
-        transition: none;
+                transition: none;
+            }
+        }
     }
 }
