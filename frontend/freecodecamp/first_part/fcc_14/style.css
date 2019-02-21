@@ -21,6 +21,9 @@ body main #navbar {
   left: 0;
   overflow: auto;
   height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-bottom: 5rem;
   width: 200px;
   color: black;
   background: #c5dfe7;
@@ -77,6 +80,10 @@ body main article li {
 
 body footer {
   position: relative;
+  display: block;
+  height: 5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   z-index: 1000;
   background: #cacaca;
   text-align: center;

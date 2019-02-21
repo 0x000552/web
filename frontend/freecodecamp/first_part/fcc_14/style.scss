@@ -31,9 +31,10 @@ body {
             position: fixed;
             top: 0;
             left: 0;
-            //FIXME: footer hide last items....
             overflow: auto;
             height: 100vh;
+            box-sizing: border-box;
+            padding-bottom: 5rem;
             width: $navbar_showed_width;
             color: $nav_font_c;
             background: $navbar_bg_c;
@@ -94,6 +95,9 @@ body {
 
     footer {
         position: relative;
+        display: block;
+        height: 5rem;
+        box-sizing: border-box;
         z-index: 1000;
         background: $article_bg_c;
         text-align: center;
