@@ -79,15 +79,16 @@
                 <p>JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of
                     language elements such as operators, control structures, and statements. Core JavaScript can be
                     extended for a variety of purposes by supplementing it with additional objects; for example:</p>
-
-                <li>Client-side JavaScript extends the core language by supplying objects to control a browser and its
-                    Document Object Model (DOM). For example, client-side extensions allow an application to place
-                    elements on an HTML form and respond to user events such as mouse clicks, form input, and page
-                    navigation.</li>
-                <li>Server-side JavaScript extends the core language by supplying objects relevant to running
-                    JavaScript on a server. For example, server-side extensions allow an application to communicate
-                    with a database, provide continuity of information from one invocation to another of the
-                    application, or perform file manipulations on a server.</li>
+                <ul>
+                    <li>Client-side JavaScript extends the core language by supplying objects to control a browser and its
+                        Document Object Model (DOM). For example, client-side extensions allow an application to place
+                        elements on an HTML form and respond to user events such as mouse clicks, form input, and page
+                        navigation.</li>
+                    <li>Server-side JavaScript extends the core language by supplying objects relevant to running
+                        JavaScript on a server. For example, server-side extensions allow an application to communicate
+                        with a database, provide continuity of information from one invocation to another of the
+                        application, or perform file manipulations on a server.</li>
+                </ul>
             </section>
 
             <section class="main-section" id="What_you_should_already_know">
@@ -95,10 +96,12 @@
 
                 <p>This guide assumes you have the following basic background:</p>
 
-                <li>A general understanding of the Internet and the World Wide Web (WWW).</li>
-                <li>Good working knowledge of HyperText Markup Language (HTML).</li>
-                <li>Some programming experience. If you are new to programming, try one of the tutorials linked on the
-                    main page about JavaScript.</li>
+                <ul>
+                    <li>A general understanding of the Internet and the World Wide Web (WWW).</li>
+                    <li>Good working knowledge of HyperText Markup Language (HTML).</li>
+                    <li>Some programming experience. If you are new to programming, try one of the tutorials linked on the
+                        main page about JavaScript.</li>
+                </ul>
             </section>
 
             <section class="main-section" id="JavaScript_and_Java">
@@ -153,12 +156,12 @@ greetMe("World");
             <section class="main-section" id="Declaring_variables">
                 <header>Declaring variables</header>
 
-                You can declare a variable in three ways:
-                <p>With the keyword var. For example, <code>var x = 42.</code> This syntax can be used to declare both
+                <p>You can declare a variable in three ways:</p>
+                <p>With the keyword var. For example, <code>var x = 42</code> This syntax can be used to declare both
                     local and global variables.</p>
-                <p>By simply assigning it a value. For example, <code>x = 42.</code> This always declares a global
+                <p>By simply assigning it a value. For example, <code>x = 42</code> This always declares a global
                     variable. It generates a strict JavaScript warning. You shouldn't use this variant.</p>
-                <p>With the keyword let. For example,<code> let y = 13.</code> This syntax can be used to declare a
+                <p>With the keyword let. For example, <code>let y = 13</code> This syntax can be used to declare a
                     block scope local variable. See Variable scope below.</p>
             </section>
 
@@ -173,18 +176,18 @@ greetMe("World");
                     example the following code will log 5, because the scope of x is the function (or global context)
                     within which x is declared, not the block, which in this case is an if statement.</p>
                 <code>
-                    if (true) {
-                    var x = 5;
-                    }
-                    console.log(x); // 5
+if (true) {
+    var x = 5;
+}
+console.log(x); // 5
                 </code>
                 <p>This behavior changes, when using the let declaration introduced in ECMAScript 2015.</p>
                 <code>
-                    if (true) {
-                    let y = 5;
-                    }
-                    console.log(y);
-                    // ReferenceError: y is not defined
+if (true) {
+    let y = 5;
+}
+console.log(y);
+// ReferenceError: y is not defined
                 </code>
             </section>
 
@@ -207,7 +210,7 @@ greetMe("World");
                     dollar sign and can contain alphabetic, numeric, or underscore characters.</p>
 
                 <code>
-                    const PI = 3.14;
+const PI = 3.14;
                 </code>
                 <p>A constant cannot change value through assignment or be re-declared while the script is running. It
                     has to be initialized to a value.</p>
@@ -219,20 +222,20 @@ greetMe("World");
                     example:</p>
 
                 <code>
-                    // THIS WILL CAUSE AN ERROR
-                    function f() {};
-                    const f = 5;
-                    // THIS WILL CAUSE AN ERROR ALSO
-                    function f() {
-                    const g = 5;
-                    var g;
-                    //statements
-                    }
+// THIS WILL CAUSE AN ERROR
+function f() {};
+const f = 5;
+// THIS WILL CAUSE AN ERROR ALSO
+function f() {
+    const g = 5;
+    var g;
+//statements
+}
                 </code>
                 However, object attributes are not protected, so the following statement is executed without problems.
                 <code>
-                    const MY_OBJECT = {"key": "value"};
-                    MY_OBJECT.key = "otherValue";
+const MY_OBJECT = {"key": "value"};
+MY_OBJECT.key = "otherValue";
                 </code>
             </section>
 
@@ -240,8 +243,8 @@ greetMe("World");
                 <header>Data types</header>
 
                 <p>The latest ECMAScript standard defines seven data types:</p>
-                <li>
-                    <p>Six data types that are primitives:</p>
+                <ul>
+                    <li>Six data types that are primitives:</li>
                     <ul>
                         <li>Boolean. true and false.</li>
                         <li>null. A special keyword denoting a null value. Because JavaScript is case-sensitive, null
@@ -251,8 +254,8 @@ greetMe("World");
                         <li>String. "Howdy"</li>
                         <li>Symbol (new in ECMAScript 2015). A data type whose instances are unique and immutable.</li>
                     </ul>
-                </li>
-                <li>and Object</li>
+                    <li>and Object</li>
+                </ul>
                 Although these data types are a relatively small amount, they enable you to perform useful functions
                 with your applications. Objects and functions are the other fundamental elements in the language. You
                 can think of objects as named containers for values, and functions as procedures that your application
@@ -266,11 +269,11 @@ greetMe("World");
                 clause to execute a statement if the condition is false. An if statement looks as follows:
 
                 <code>
-                    if (condition) {
-                    statement_1;
-                    } else {
-                    statement_2;
-                    }
+if (condition) {
+    statement_1;
+} else {
+    statement_2;
+}
                 </code>
                 condition can be any expression that evaluates to true or false. See Boolean for an explanation of what
                 evaluates to true and false. If condition evaluates to true, statement_1 is executed; otherwise,
@@ -281,43 +284,43 @@ greetMe("World");
                     as follows:
                 </p>
                 <code>
-                    if (condition_1) {
-                    statement_1;
-                    } else if (condition_2) {
-                    statement_2;
-                    } else if (condition_n) {
-                    statement_n;
-                    } else {
-                    statement_last;
-                    } 
+if (condition_1) {
+    statement_1;
+} else if (condition_2) {
+    statement_2;
+} else if (condition_n) {
+    statement_n;
+} else {
+    statement_last;
+} 
                 </code>
                 In the case of multiple conditions only the first logical condition which evaluates to true will be
                 executed. To execute multiple statements, group them within a block statement ({ ... }) . In general,
                 it's good practice to always use block statements, especially when nesting if statements:
 
                 <code>
-                    if (condition) {
-                    statement_1_runs_if_condition_is_true;
-                    statement_2_runs_if_condition_is_true;
-                    } else {
-                    statement_3_runs_if_condition_is_false;
-                    statement_4_runs_if_condition_is_false;
-                    }
+if (condition) {
+    statement_1_runs_if_condition_is_true;
+    statement_2_runs_if_condition_is_true;
+} else {
+    statement_3_runs_if_condition_is_false;
+    statement_4_runs_if_condition_is_false;
+}
                 </code>
                 It is advisable to not use simple assignments in a conditional expression, because the assignment can
                 be confused with equality when glancing over the code. For example, do not use the following code:
                 <code>
-                    if (x = y) {
-                    /* statements here */
-                    }
+if (x = y) {
+    /* statements here */
+}
                 </code>
                 If you need to use an assignment in a conditional expression, a common practice is to put additional
                 parentheses around the assignment. For example:
 
                 <code>
-                    if ((x = y)) {
-                    /* statements here */
-                    }
+if ((x = y)) {
+    /* statements here */
+}
                 </code>
             </section>
 
@@ -328,8 +331,8 @@ greetMe("World");
                 statement looks as follows:
 
                 <code>
-                    while (condition)
-                    statement
+while (condition)
+    statement
                 </code>
                 If the condition becomes false, statement within the loop stops executing and control passes to the
                 statement following the loop.
@@ -345,19 +348,21 @@ greetMe("World");
                 <p>The following while loop iterates as long as n is less than three:</p>
 
                 <code>
-                    var n = 0;
-                    var x = 0;
-                    while (n &lt; 3) {
-                    n++;
-                    x += n;
-                    }
+var n = 0;
+var x = 0;
+while (n &lt; 3) {
+    n++;
+    x += n;
+}
                 </code>
                 <p>With each iteration, the loop increments n and adds that value to x. Therefore, x and n take on the
                     following values:</p>
 
-                <li>After the first pass: n = 1 and x = 1</li>
-                <li>After the second pass: n = 2 and x = 3</li>
-                <li>After the third pass: n = 3 and x = 6</li>
+                <ul>
+                    <li>After the first pass: n = 1 and x = 1</li>
+                    <li>After the second pass: n = 2 and x = 3</li>
+                    <li>After the third pass: n = 3 and x = 6</li>
+                </ul>
                 <p>After completing the third pass, the condition n &lt; 3 is no longer true, so the loop terminates.</p>
 
             </section>
@@ -368,22 +373,24 @@ greetMe("World");
                 A function definition (also called a function declaration, or function statement) consists of the
                 function keyword, followed by:
 
-                <li>The name of the function.</li>
-                <li>A list of arguments to the function, enclosed in parentheses and separated by commas.</li>
-                <li>The JavaScript statements that define the function, enclosed in curly brackets, { }.</li>
+                <ul>
+                    <li>The name of the function.</li>
+                    <li>A list of arguments to the function, enclosed in parentheses and separated by commas.</li>
+                    <li>The JavaScript statements that define the function, enclosed in curly brackets, { }.</li>
+                </ul>
                 <p>For example, the following code defines a simple function named square:</p>
 
                 <code>
-                    function square(number) {
-                    return number * number;
-                    }
+function square(number) {
+    return number * number;
+}
                 </code>
                 <p>The function square takes one argument, called number. The function consists of one statement that
                     says to return the argument of the function (that is, number) multiplied by itself. The return
                     statement specifies the value returned by the function.
                 </p>
                 <code>
-                    return number * number;
+return number * number;
                 </code>
                 <p>Primitive parameters (such as a number) are passed to functions by value; the value is passed to the
                     function, but if the function changes the value of the parameter, this change is not reflected
@@ -403,6 +410,12 @@ greetMe("World");
         </article>
 
     </main>
+
+    <footer>
+        <p><em>Created by: <b>0x000552</b>.</em></p>
+        <address>Contact information: <a href="mailto:0x000552@gmail.com">
+            0x000552@gmail.com</a>.</address>
+    </footer>
 
 </body>
 </html>

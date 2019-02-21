@@ -1,9 +1,12 @@
 // Colors
 $root_bg_c: darkorange;
+
 $navbar_bg_c: rgb(197, 223, 231);
-$article_bg_c: rgb(167, 167, 167);
 $nav_li_border_c: black;
 $nav_font_c: black;
+
+$article_bg_c: rgb(202, 202, 202); //same for footer
+$code_bg_c: rgb(184, 184, 184);
 
 $navbar_hidden_width: 20px;
 $navbar_showed_width: 200px;
@@ -11,6 +14,7 @@ $navbar_showed_width: 200px;
 
 :root {
     background: root_bg_c;
+    text-align: justify;
 }
 
 body {
@@ -30,7 +34,6 @@ body {
             height: 100vh;
             width: $navbar_showed_width;
             color: $nav_font_c;
-        
             background: $navbar_bg_c;
 
             header {
@@ -59,20 +62,46 @@ body {
     
         article {
             margin-left: $navbar_showed_width;
-        
-            padding: 1em;
-        
+            padding: 2em;
             border-left: 10px double black;
-        
             background: $article_bg_c;
 
-            section {
-                margin-bottom: 50px; 
+            .main-section {
+                margin-bottom: 2em;
+
+                header {
+                    margin-left: -0.5em;
+                    margin-bottom: 1em;
+                }   
             }
 
             code {
+                display: table;
+                padding: 0em 1.5em;
+                margin: 1em;
+                background: $code_bg_c;
                 white-space: pre;
+                overflow: auto;
             }
+
+            li {
+                margin-bottom: 0.5em;
+            }
+        }
+    }
+
+    footer {
+        position: relative;
+        z-index: 1000;
+        background: $article_bg_c;
+        text-align: center;
+        margin-top: -2em;
+        padding: 1em;
+        border-top: 2px solid rgba(0, 0, 0, 0.075);
+        
+
+        p {
+            margin-top: 0;
         }
     }
 
@@ -88,30 +117,34 @@ body {
             $g_opacity_delay: 0.5s;
             $g_opacity_duration: 0.5s;
 
-            //FIXME: Transition animation at hide process
-
-            @mixin transition_op (  $width_margin_delay: $g_width_margin_delay, 
+            @mixin transition_wpd (  $width_margin_delay: $g_width_margin_delay, 
                                     $width_margin_duration: $g_width_margin_duration, 
                                     $opacity_delay: $g_opacity_delay, 
                                     $opacity_duration: $g_opacity_duration
                                  ) {
                 transition: width $width_margin_duration ease-out $width_margin_delay,
-                            opacity $opacity_duration ease-out $opacity_delay;
+                            opacity $opacity_duration ease-out $opacity_delay,
+                            visibility 0s ease-out $opacity_duration;
             }
 
             #navbar {
                 width: $navbar_hidden_width;
-                
+                @include transition_wpd($opacity_delay: 0s);
+
                 * {
-                    opacity: 0;
                     transition: inherit;
+                }
+                
+                *:not(.header_hidden_navbar) {
+                    visibility: hidden;
+                    opacity: 0;
                 }
 
                 .header_hidden_navbar {
                     display: block;
                     position: absolute;
             
-                    opacity: 1!important;
+                    opacity: 1;
                     width: 0.1em;
                     font-family: monospace;
                     word-wrap: break-word;
@@ -123,8 +156,6 @@ body {
                     margin: auto;
                 }
 
-                @include transition_op();
-
                 & + article {
                     margin-left: $navbar_hidden_width;
                     transition: margin-left $g_width_margin_duration ease-out $g_width_margin_delay;
@@ -132,15 +163,15 @@ body {
 
                 &:hover {
                     width: $navbar_showed_width;
+                    @include transition_wpd($width_margin_delay: 0s);
 
-                    @include transition_op($width_margin_delay: 0s);
-
-                    * {
+                    *:not(.header_hidden_navbar){
+                        visibility: visible;
                         opacity: 1;
                     }
 
                     .header_hidden_navbar {
-                        opacity: 0!important;
+                        opacity: 0;
                     }
 
                     & + article {
@@ -160,15 +191,11 @@ body {
                 position: static;
                 height: auto;
                 width: 100%;
-
-                transition: none;
             }
 
             article {
                 margin-left: 0px;
                 border: initial;
-
-                transition: none;
             }
         }
     }

@@ -1,5 +1,6 @@
 :root {
   background: root_bg_c;
+  text-align: justify;
 }
 
 body {
@@ -46,34 +47,65 @@ body main #navbar .header_hidden_navbar {
 
 body main article {
   margin-left: 200px;
-  padding: 1em;
+  padding: 2em;
   border-left: 10px double black;
-  background: #a7a7a7;
+  background: #cacaca;
 }
 
-body main article section {
-  margin-bottom: 50px;
+body main article .main-section {
+  margin-bottom: 2em;
+}
+
+body main article .main-section header {
+  margin-left: -0.5em;
+  margin-bottom: 1em;
 }
 
 body main article code {
+  display: table;
+  padding: 0em 1.5em;
+  margin: 1em;
+  background: #b8b8b8;
   white-space: pre;
+  overflow: auto;
+}
+
+body main article li {
+  margin-bottom: 0.5em;
+}
+
+body footer {
+  position: relative;
+  z-index: 1000;
+  background: #cacaca;
+  text-align: center;
+  margin-top: -2em;
+  padding: 1em;
+  border-top: 2px solid rgba(0, 0, 0, 0.075);
+}
+
+body footer p {
+  margin-top: 0;
 }
 
 @media (max-width: 800px) and (min-width: 501px) {
   body main #navbar {
     width: 20px;
-    -webkit-transition: width 0.5s ease-out 0.5s, opacity 0.5s ease-out 0.5s;
-    transition: width 0.5s ease-out 0.5s, opacity 0.5s ease-out 0.5s;
+    -webkit-transition: width 0.5s ease-out 0.5s, opacity 0.5s ease-out 0s, visibility 0s ease-out 0.5s;
+    transition: width 0.5s ease-out 0.5s, opacity 0.5s ease-out 0s, visibility 0s ease-out 0.5s;
   }
   body main #navbar * {
-    opacity: 0;
     -webkit-transition: inherit;
     transition: inherit;
+  }
+  body main #navbar *:not(.header_hidden_navbar) {
+    visibility: hidden;
+    opacity: 0;
   }
   body main #navbar .header_hidden_navbar {
     display: block;
     position: absolute;
-    opacity: 1 !important;
+    opacity: 1;
     width: 0.1em;
     font-family: monospace;
     word-wrap: break-word;
@@ -89,14 +121,15 @@ body main article code {
   }
   body main #navbar:hover {
     width: 200px;
-    -webkit-transition: width 0.5s ease-out 0s, opacity 0.5s ease-out 0.5s;
-    transition: width 0.5s ease-out 0s, opacity 0.5s ease-out 0.5s;
+    -webkit-transition: width 0.5s ease-out 0s, opacity 0.5s ease-out 0.5s, visibility 0s ease-out 0.5s;
+    transition: width 0.5s ease-out 0s, opacity 0.5s ease-out 0.5s, visibility 0s ease-out 0.5s;
   }
-  body main #navbar:hover * {
+  body main #navbar:hover *:not(.header_hidden_navbar) {
+    visibility: visible;
     opacity: 1;
   }
   body main #navbar:hover .header_hidden_navbar {
-    opacity: 0 !important;
+    opacity: 0;
   }
   body main #navbar:hover + article {
     margin-left: 200px;
@@ -110,14 +143,10 @@ body main article code {
     position: static;
     height: auto;
     width: 100%;
-    -webkit-transition: none;
-    transition: none;
   }
   body main article {
     margin-left: 0px;
     border: initial;
-    -webkit-transition: none;
-    transition: none;
   }
 }
 /*# sourceMappingURL=style.css.map */
