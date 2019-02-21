@@ -19,6 +19,7 @@ body main #navbar {
   position: fixed;
   top: 0;
   left: 0;
+  overflow: auto;
   height: 100vh;
   width: 200px;
   color: black;

@@ -31,6 +31,8 @@ body {
             position: fixed;
             top: 0;
             left: 0;
+            //FIXME: footer hide last items....
+            overflow: auto;
             height: 100vh;
             width: $navbar_showed_width;
             color: $nav_font_c;
